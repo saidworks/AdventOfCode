@@ -1,0 +1,21 @@
+# .NET Core
+bin/
+bin/**/
+obj/
+obj/**/
+.idea
+
+# Runtime files
+*.user
+*.nupkg
+*.csproj.user
+
+# Roslyn derived files
+*.[Uu][Ii].pid
+
+# C# specific
+**/bin/
+**/obj/
+**/*.csproj.user
+**/*.user
+**/*.nupkg

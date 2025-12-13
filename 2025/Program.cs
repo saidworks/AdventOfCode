@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.day1;
+using AdventOfCode.day2;
 using Microsoft.Extensions.Logging;
 
 namespace AdventOfCode;
@@ -13,9 +14,14 @@ public class Program
             builder.AddConsole()
                 .SetMinimumLevel(LogLevel.Information);
         });
-        // Day 1
-        ILogger<FileReader> logger = loggerFactory.CreateLogger<FileReader>();
-        var fileReader = new FileReader(logger);
-        fileReader.CountZeroes();
+        // // Day 1
+        // ILogger<ZeroCounter> logger = loggerFactory.CreateLogger<ZeroCounter>();
+        // var fileReader = new ZeroCounter(logger);
+        // fileReader.CountZeroes();
+        // Day 2
+        var logger = loggerFactory.CreateLogger<IdValidator>();
+        var idValidator = new IdValidator(logger);
+        var invalidNumbersSum = idValidator.ReturnInvalidNumbersSum();
+        logger.LogInformation($"Invalid {invalidNumbersSum} invalid numbers sum");
     }
 }

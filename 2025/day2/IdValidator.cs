@@ -94,25 +94,34 @@ public class IdValidator(ILogger<IdValidator> logger)
     private static bool HasRepeatedNumberPattern(double number)
     {
         string numberString = number.ToString(CultureInfo.InvariantCulture);
-        string pattern = @"^\d+-\d+$"; // Simplified pattern for demonstration, consider adjusting based on exact requirement
-
-        Match match = Regex.Match(numberString, pattern);
+        int length = numberString.Length;
+    
+        // Check if the length of the number is zero or negative, though this shouldn't happen
+        if (length <= 0)
+            return false;
 
         // Adjusted logic to correctly identify repeated patterns
-        if (match.Success)
-            return false;
-        
-        // Calculate the length of each part
-        int length = numberString.Length;
-        if (length % 2 != 0) // If the length isn't even, it cannot be split into two identical parts
-            return false;
-        
-        int halfLength = length / 2;
-        string leftPart = numberString.Substring(0, halfLength);
-        string rightPart = numberString.Substring(halfLength);
+        for (int i = 1; i <= length / 2; i++)
+        {
+            if (length % i != 0)
+                continue; // Skip lengths that don't divide evenly into the number string length
 
-        // Check if the two parts are identical
-        return leftPart == rightPart;
+            string part = numberString.Substring(0, i);
+            string repeatedPattern = new string(part.ToCharArray(), 0, i);
+        
+            // Construct the repeated pattern to match the length of the original number
+            string repeatedPatternStr = repeatedPattern;
+            while (repeatedPatternStr.Length < length)
+                repeatedPatternStr += repeatedPattern;
+
+            // Trim to the original length if needed
+            repeatedPatternStr = repeatedPatternStr.Substring(0, length);
+
+            // Check if the number string matches the repeated pattern
+            if (numberString == repeatedPatternStr)
+                return true;
+        }
+
+        return false;
     }
-    
 }

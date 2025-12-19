@@ -13,14 +13,8 @@
         <PackageReference Include="Pastel" Version="6.0.1" />
     </ItemGroup>
     <ItemGroup>
-      <None Update="day1\data.txt">
+        <None Include="data\**\*.*">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
-    <ItemGroup>
-        <None Update="day2\data.txt">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
-    </ItemGroup>
-
 </Project>

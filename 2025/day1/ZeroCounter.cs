@@ -5,7 +5,7 @@ namespace AdventOfCode.day1;
 
 public class ZeroCounter(ILogger<ZeroCounter> logger)
 {
-    private static readonly string FilePath = Path.Combine("day1", "data.txt");
+    private static readonly string FilePath = Path.Combine("data", "day1.txt");
     private static readonly List<int> Numbers = [];
     private void ReadAndFormatData()
     {
@@ -101,8 +101,6 @@ public class ZeroCounter(ILogger<ZeroCounter> logger)
             {
                 count++;
             }
-
-
         }
  
 

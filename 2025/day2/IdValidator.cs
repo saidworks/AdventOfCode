@@ -22,7 +22,7 @@ namespace AdventOfCode.day2;
 
 public class IdValidator(ILogger<IdValidator> logger)
 {
-    private static readonly string FilePath = Path.Combine("day2", "data.txt");
+    private static readonly string FilePath = Path.Combine("data", "day2.txt");
     
     public double ReturnInvalidNumbersSum()
     {
